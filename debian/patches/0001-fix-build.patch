@@ -1,0 +1,26 @@
+From 0899e3aedabeaa601c43232d3a2ad2216344c039 Mon Sep 17 00:00:00 2001
+From: lhdjply <lhdjply@126.com>
+Date: Fri, 14 Nov 2025 08:30:51 +0800
+Subject: [PATCH] fix build
+
+Signed-off-by: lhdjply <lhdjply@126.com>
+---
+ src/nd-wfd-p2p-sink.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/nd-wfd-p2p-sink.c b/src/nd-wfd-p2p-sink.c
+index 82199cf..f297c6c 100644
+--- a/src/nd-wfd-p2p-sink.c
++++ b/src/nd-wfd-p2p-sink.c
+@@ -495,7 +495,7 @@ firewall_ready (GObject      *source_object,
+   connection = nm_simple_connection_new ();
+ 
+   general_setting = nm_setting_connection_new ();
+-  nm_setting_connection_add_permission(general_setting, "user", g_get_user_name(), NULL);
++  nm_setting_connection_add_permission(NM_SETTING_CONNECTION(general_setting), "user", g_get_user_name(), NULL);
+   nm_connection_add_setting (connection, general_setting);
+   g_object_set (general_setting, NM_SETTING_CONNECTION_ZONE, ND_WFD_ZONE, NULL);
+ 
+-- 
+2.50.1
+
